@@ -1,1 +1,89 @@
-afdsafdsadfsafdsafsd
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+    <title>PA-2</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <H1 name='m1'>MONTH</H1>
+    <table id="tbldata" style="border: black 1px solid;">
+        <thead id="bord" style="border: black 1px solid;">
+            <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        let dmonth = prompt('Month (1-12)', '1');
+        let dday = prompt('Start Day (1-7)', '1');
+        console.log(dmonth);
+
+        let tag = document.getElementsByName('m1');
+
+        m = parseInt(dmonth);
+
+        for (index = 1; index <= 12; index++) {
+            if (m == 1) {
+                tag[0].innerHTML = "January";
+            }
+            else if (m == 2) {
+                tag[0].innerHTML = "Febraury";
+            }
+            else if (m == 3) {
+                tag[0].innerHTML = "March";
+            }
+            else if (m == 4) {
+                tag[0].innerHTML = "April";
+            }
+            else if (m == 5) {
+                tag[0].innerHTML = "May";
+            }
+            else if (m == 6) {
+                tag[0].innerHTML = "June";
+            }
+            else if (m == 7) {
+                tag[0].innerHTML = "July";
+            }
+            else if (m == 8) {
+                tag[0].innerHTML = "August";
+            }
+            else if (m == 9) {
+                tag[0].innerHTML = "September";
+            }
+            else if (m == 10) {
+                tag[0].innerHTML = "October";
+            }
+            else if (m == 11) {
+                tag[0].innerHTML = "November";
+            }
+            else if (m == 12) {
+                tag[0].innerHTML = "December";
+            }
+            else
+                tag[0].innerHTML = "Invalid Input";
+        }
+
+        tag[1].innerHTML = dday;
+
+
+
+
+    </script>
+
+</body>
+
+</html>
