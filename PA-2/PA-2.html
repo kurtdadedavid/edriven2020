@@ -2,18 +2,43 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0" />
     <title>PA-2</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="" />
+    <style>
+        table,
+        h1 {
+            font-family: "Lato", sans-serif;
+        }
 
+        table {
+            margin: 0 auto;
+            table-layout: fixed;
+            width: 500px;
+            text-align: center;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid rgb(180, 105, 7);
+            padding: 5px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
-    <H1 name='m1'>MONTH</H1>
-    <table id="tbldata" style="border: black 1px solid;">
-        <thead id="bord" style="border: black 1px solid;">
-            <tr>
+    <h1 name="m1">MONTH</h1>
+    <table style="border: black 1px solid">
+        <thead style="border: black 1px solid">
+            <tr name="day">
                 <th>Sun</th>
                 <th>Mon</th>
                 <th>Tue</th>
@@ -23,67 +48,97 @@
                 <th>Sat</th>
             </tr>
         </thead>
-        <tbody>
-
-        </tbody>
     </table>
     <script>
-        let dmonth = prompt('Month (1-12)', '1');
-        let dday = prompt('Start Day (1-7)', '1');
-        console.log(dmonth);
+        let dmonth = prompt("Month (1-12)", "1");
+        let dday = prompt("Start Day (1-7)", "1");
+        //console.log(dmonth);
 
-        let tag = document.getElementsByName('m1');
+        let tag = document.getElementsByName("m1");
+        let day = document.getElementsByName("day");
 
+        //parsing
         m = parseInt(dmonth);
+        d = parseInt(dday);
 
-        for (index = 1; index <= 12; index++) {
-            if (m == 1) {
-                tag[0].innerHTML = "January";
-            }
-            else if (m == 2) {
-                tag[0].innerHTML = "Febraury";
-            }
-            else if (m == 3) {
-                tag[0].innerHTML = "March";
-            }
-            else if (m == 4) {
-                tag[0].innerHTML = "April";
-            }
-            else if (m == 5) {
-                tag[0].innerHTML = "May";
-            }
-            else if (m == 6) {
-                tag[0].innerHTML = "June";
-            }
-            else if (m == 7) {
-                tag[0].innerHTML = "July";
-            }
-            else if (m == 8) {
-                tag[0].innerHTML = "August";
-            }
-            else if (m == 9) {
-                tag[0].innerHTML = "September";
-            }
-            else if (m == 10) {
-                tag[0].innerHTML = "October";
-            }
-            else if (m == 11) {
-                tag[0].innerHTML = "November";
-            }
-            else if (m == 12) {
-                tag[0].innerHTML = "December";
-            }
-            else
-                tag[0].innerHTML = "Invalid Input";
+        //list for the months
+        let _monthlist = [
+            " ",
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+        ];
+
+        //determine the month by the input 'dmonth'
+
+        if (m <= 0) {
+            tag[0].innerHTML = "Invalid Input";
+        } else if (m >= 13) {
+            tag[0].innerHTML = "Invalid Input";
+        } else {
+            //console.log(_monthlist[m]);
+            tag[0].innerHTML = _monthlist[m];
         }
 
-        tag[1].innerHTML = dday;
 
 
+        let table = document.getElementsByTagName("table")[0];
+        let tableBody = document.createElement("tbody");
 
+        let col = 7;
+        let row = 6;
+        let dayCount = 1;
+        let empCount = 1;
+        let days = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
+        for (x = 1; x <= row; x++) {
+            let row = document.createElement("tr");
+            for (j = 1; j <= col; j++) {
+                if (d >= 8) {
+                    console.log("Check Day Input");
+                    break;
+                } else if (d != empCount) {
+
+                    var cell = document.createElement("td");
+                    var cellText = document.createTextNode("\u00A0");
+                    cell.appendChild(cellText);
+                    row.appendChild(cell);
+                    empCount++;
+                } else if (dayCount > days[m]) {
+                    console.log("Check Date: ", dayCount, days[m]);
+                    break;
+                } else {
+
+                    var cell = document.createElement("td");
+                    var cellText = document.createTextNode(dayCount);
+                    cell.appendChild(cellText);
+                    row.appendChild(cell);
+                    dayCount++;
+                }
+            }
+            if (d >= 8) {
+
+                break;
+            }
+            tableBody.appendChild(row);
+
+            if (dayCount > days[m]) {
+                console.log("Check Date: ", dayCount, days[m]);
+                break;
+            }
+        }
+        table.appendChild(tableBody);
+        table.setAttribute("border", "1"); 
     </script>
-
 </body>
 
 </html>
