@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0" />
+    <title>PA-2</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="" />
+    <style>
+        table,
+        h1 {
+            font-family: "Lato", sans-serif;
+        }
+
+        table {
+            margin: 0 auto;
+            table-layout: fixed;
+            width: 500px;
+            text-align: center;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid rgb(180, 105, 7);
+            padding: 5px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 name="m1">MONTH</h1>
+    <table style="border: black 1px solid">
+        <thead style="border: black 1px solid">
+            <tr name="day">
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+            </tr>
+        </thead>
+    </table>
+    <script>
+        let dmonth = prompt("Month (1-12)", "1");
+        let dday = prompt("Start Day (1-7)", "1");
+        //console.log(dmonth);
+
+        let tag = document.getElementsByName("m1");
+        let day = document.getElementsByName("day");
+
+        //parsing
+        m = parseInt(dmonth);
+        d = parseInt(dday);
+
+        //list for the months
+        let _monthlist = [
+            " ",
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+        ];
+
+        //determine the month by the input 'dmonth'
+
+        if (m <= 0) {
+            tag[0].innerHTML = "Invalid Input";
+        } else if (m >= 13) {
+            tag[0].innerHTML = "Invalid Input";
+        } else {
+            //console.log(_monthlist[m]);
+            tag[0].innerHTML = _monthlist[m];
+        }
+
+
+
+        let table = document.getElementsByTagName("table")[0];
+        let tableBody = document.createElement("tbody");
+
+        let col = 7;
+        let row = 6;
+        let dayCount = 1;
+        let empCount = 1;
+        let days = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+        for (x = 1; x <= row; x++) {
+            let row = document.createElement("tr");
+            for (j = 1; j <= col; j++) {
+                if (d >= 8) {
+                    console.log("Check Day Input");
+                    break;
+                } else if (d != empCount) {
+
+                    var cell = document.createElement("td");
+                    var cellText = document.createTextNode("\u00A0");
+                    cell.appendChild(cellText);
+                    row.appendChild(cell);
+                    empCount++;
+                } else if (dayCount > days[m]) {
+                    console.log("Check Date: ", dayCount, days[m]);
+                    break;
+                } else {
+
+                    var cell = document.createElement("td");
+                    var cellText = document.createTextNode(dayCount);
+                    cell.appendChild(cellText);
+                    row.appendChild(cell);
+                    dayCount++;
+                }
+            }
+            if (d >= 8) {
+
+                break;
+            }
+            tableBody.appendChild(row);
+
+            if (dayCount > days[m]) {
+                console.log("Check Date: ", dayCount, days[m]);
+                break;
+            }
+        }
+        table.appendChild(tableBody);
+        table.setAttribute("border", "1"); 
+    </script>
+</body>
+
+</html>
