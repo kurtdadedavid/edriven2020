@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0" />
+    <title>PA-3</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="" />
+    <style>
+        .t {
+            margin: 100px;
+
+        }
+
+        input[type="number"] {
+            width: 310px;
+        }
+
+        .texts {
+            margin-top: 10px;
+            size: auto;
+            text-align: right;
+            padding: 5px;
+
+        }
+
+        button {
+            color: white;
+            text-align: centers;
+            background-color: red;
+            padding: 5px;
+            width: 100px;
+            border-radius: 12px;
+        }
+    </style>
+
+    <script>
+        function cal() {
+            //constant
+            var p2 = .12;
+
+            //parsing
+            var uinp = parseInt(document.getElementById("userinput").value);
+            var uinp2 = parseInt(document.getElementById("Minim").value);
+            var mi = parseInt(document.getElementById("Sub+Tax").value);
+
+            //12%tax
+            var totaltax = uinp * p2;
+
+            //subtotal+tax
+            var tot = uinp + totaltax;
+
+            /////////////////////////goood                
+
+            //minimum
+            var mini = tot;
+
+            //amtpaid
+            var float = uinp2 - tot;
+
+            if (uinp >= 100 && uinp <= 10000) {
+                document.getElementById("Minim").disabled = false;
+                document.getElementById("Tax").value = totaltax.toFixed(2);
+                document.getElementById("Sub+Tax").value = tot.toFixed(2);
+                let h = document.getElementById("Minim").value;
+                h.innerHTML = uinp2.toFixed(2);
+                document.getElementById("total").value = float.toFixed(2);
+                document.getElementById("btn").style.backgroundColor = "green";
+                document.getElementById("btn").disabled = false;
+            } else {
+                document.getElementById("Minim").disabled = true;
+                document.getElementById("Tax").value = "Tax";
+                document.getElementById("Sub+Tax").value = "Total";
+                let h = document.getElementById("Minim").value = "Amount Paid";
+                h.innerHTML = uinp2.toFixed(2);
+                document.getElementById("total").value = "Change";
+                document.getElementById("btn").style.backgroundColor = "red";
+                document.getElementById("btn").disabled = true;
+            }
+
+
+        }
+    </script>
+</head>
+
+<body>
+    <div class="t">
+        <input class="texts" id="userinput" type="number" min="100" max="10000" placeholder="Subtotal" onkeyup="cal()"
+            onclick="cal()" .value="Subtotal" /> <label for="user">User input
+            from 100
+            to 10000</label><br>
+
+        <input class="texts" id="Tax" type="number" placeholder="Tax" size="50" readonly /> <label for="Tax">+12%
+            Tax</label><br>
+
+        <input class="texts" id="Sub+Tax" type="number" placeholder="Total" size="50" readonly /> <label
+            for="Sub+Tax">Subtotal
+            +
+            Tax</label><br>
+
+        <input class="texts" id="Minim" type="number" placeholder="Amount Paid" oninput="cal()" disabled />
+        <label for="minimu">Minimum
+            is base on
+            Subtotal+Tax</label><br>
+
+        <input class="texts" id="total" type="number" placeholder="Change" size="50" readonly /> <label
+            for="total">Amount
+            Paid
+            -
+            Total</label><br><br>
+
+        <button id="btn" type="button" disabled="disabled">PAY</button>
+    </div>
+</body>
+
+</html>
