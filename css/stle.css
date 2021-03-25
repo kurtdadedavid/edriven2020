@@ -43,10 +43,158 @@ h2 {
 .image{
     float: left;
     padding: 20px;
-   text-align: center;
+    text-align: center;
 }
 a:hover {
     color: blue;
     background-color: transparent;
     text-decoration: underline;
+}
+.Contain button:hover{
+      color: black;
+      background-color: red;
+}
+th{
+    color: white;
+}
+table{
+    border-collapse: collapse;
+    display: inline-block;
+    margin-top: 10;
+}
+table th{
+    text-align: left;
+    background: black;
+    padding: 10 80;
+    
+}
+table td{
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    margin:250;
+    max-width: 7000px;
+    width: 1000px;
+    height: 20vh;
+    background-color: black;
+    color: white;
+
+}
+.navigation{
+    display: flex;
+    align-items: center;
+    background-color:white  ;
+
+}
+.image2{
+    float: right;
+    padding: 20px;
+    
+   
+} 
+.right2{
+    margin-left: 950;
+}
+.right{
+    margin-left: 10;
+} 
+.image h3{
+    font-size:18;
+    font-style: italic;
+} 
+.buttonleft{
+float: center;
+
+margin-right: 1000;
+}
+.buttonleft button{
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+   
+}
+.buttonleft button:hover{
+    color: black;  
+   background-color: red;
+   
+}
+/*--------------fd-------------------*/
+.popup .overlay{
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100vw;
+    height:100vh;
+    background:rgba(0,0,0,0.7);
+    z-index:1;
+    display:none;
+}
+.popup .content {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0);
+    background:#fff;
+    width:1000px;
+    height:500;
+    z-index:2;
+    text-align:center;
+    padding:20px;
+    box-sizing:border-box;
+    font-family:"Open Sans",sans-serif;
+  }
+   
+  .popup .closebtn1 {
+    cursor:pointer;
+    position:absolute;
+    right:20px;
+    top:20px;
+    width:30px;
+    height:30px;
+    background:#222;
+    color:#fff;
+    font-size:25px;
+    font-weight:600;
+    line-height:30px;
+    text-align:center;
+    border-radius:50%;
+  }
+   
+  .popup.active .overlay {
+    display:block;
+  }
+
+  .popup.active .content {
+    transition:all 300ms ease-in-out;
+    transform:translate(-50%,-50%) scale(1);
+  }
+  h1 {
+    border-bottom: 5px solid black;
+  }
+  .row{
+      display: inline-block;
+      margin: 10px;
+  }
+  .column button{
+    border: black 1px solid;
+    color: black;
+    padding: 15px 150px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  .column button:hover{
+    color: black;  
+    background-color: gray;
+    
   }

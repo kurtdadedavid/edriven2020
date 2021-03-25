@@ -7,11 +7,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/stle.css">
+</head>
 
 <body style="background-color:black;text-align:center">
 
+    <div class="navigation">
+        <div class="image"><i class="fas fa-microscope fa-4x"></i>
+        </div>
+        <div class="image">
+            <h3>Kurt Dade T. David(Kdtdavid.com)</h3>
+        </div>
+        <div class="right2">
+            <h3>Contact</h3>
+        </div>
+        <div class="right">
+
+            <i class="fas fa-phone-square fa-4x"></i>
+        </div>
+
+    </div>
+    </div>
+    </div>
+    <br>
+    <div class="buttonleft"><button id="NEW" onclick="togglePopup()">NEW</button></div>
+
+    <table id="tbldata">
+
+        <thead style="border: white 1px solid;">
+            <tr>
+                <th style="border: white 1px solid;">#</th>
+                <th style="border: white 1px solid;">Order #</th>
+                <th style="border: white 1px solid;">Customer Name</th>
+                <th style="border: white 1px solid;">Total</th>
+                <Th style="border: white 1px solid;">Actions</Th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <div class="popup" id="popup-1">
+        <div class="overlay"></div>
+        <div class="content">
+            <div class="closebtn1" onclick="togglePopup()">&times;</div>
+
+            <h1>NEW ORDER</h1><br>
+
+            <input type="text" id="ORNUMBER" name="OR" size="150" placeholder="Or Number"><br><br>
+            <input type="text" id="Customername" name="CN" size="150" placeholder="Customer Name"><br><br>
+            <br>
+            <h1>ITEMS</h1><br>
+            <div class="column">
+                <div class="row">
+                    <select name="pets" id="selects">
+                    </select>
+                    <input type="number" id="price" name="Price" size="50" min="1" placeholder="Price" onkeyup="cal()"
+                        onclick="cal()">
+                    <input type="number" id="qty" name="Quantity" size="50" min="1" placeholder="Quantity">
+                    <input type="text" id="subtotal" name="Subtotal" size="10" readonly disabled>
+                </div>
+                <div class="row">
+                    <select name="pets" id="selects2">
+
+                    </select>
+                    <input type="number" id="price1" name="Price" size="50" min="1" placeholder="Price">
+                    <input type="number" id="qty1" name="Quantity" size="50" min="1" placeholder="Quantity">
+                    <input type="text" id="subtotal1" name="Subtotal1" size="10" readonly disabled>
+                </div>
+                <div class="row">
+                    <select name="pets" id="selects3">
+
+                    </select>
+                    <input type="number" id="price2" name="Price" size="50" min="1" placeholder="Price">
+                    <input type="number" id="qty2" name="Quantity" size="50" min="1" placeholder="Quantity">
+                    <input type="text" id="subtotal2" name="Subtotal2" size="10" readonly disabled>
+                </div>
+                <div class="row">
+                    <select name="pets" id="selects4">
+
+                    </select>
+                    <input type="number" id="price3" name="Price" size="50" min="1" placeholder="Price">
+                    <input type="number" id="qty3" name="Quantity" size="50" min="1" placeholder="Quantity">
+                    <input type="text" id="subtotal3" name="Subtotal3" size="10" readonly disabled>
+                </div><br>
+                <button id="let">Save</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const selection = document.getElementsByName("pets")
+        const request = "https://api.thecatapi.com/v1/categories";
+        const getUserData = async () => {
+            const response = await fetch(request)
+            const data = await response.json()
+            return data
+        }
+        function cal() {
+            //parsing
+            var uinp = parseInt(document.getElementById("price").value);
+            var uinp2 = parseInt(document.getElementById("qty").value);
+            var calc = uinp * uinp2;
+            document.getElementById("subtotal").value = calc.toFixed(2);
+            console.log(calc)
+        }
+        getUserData()
+            .then((data) => {
+                for (user of data) {
+                    const x = document.getElementsByName("pets")
+                    const op = document.createElement("option");
+                    op.text = user.name;
+                    console.log(user.name)
+                    selects.add(op)
+                }
+                for (user of data) {
+                    const x = document.getElementsByName("pets")
+                    const op = document.createElement("option");
+                    op.text = user.name;
+                    console.log(user.name)
+                    selects2.add(op)
+                }
+                for (user of data) {
+                    const x = document.getElementsByName("pets")
+                    const op = document.createElement("option");
+                    op.text = user.name;
+                    console.log(user.name)
+                    selects3.add(op)
+                }
+
+                for (user of data) {
+                    const x = document.getElementsByName("pets")
+                    const op = document.createElement("option");
+                    op.text = user.name;
+                    console.log(user.name)
+                    selects4.add(op)
+                }
+
+
+            })
+            .catch((err) => console.log(err))
+
+    </script>
+
+
 
 </body>
-</head>
+
+<script src="/js/data.js"></script>
 
 </html>
