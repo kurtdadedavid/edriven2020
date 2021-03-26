@@ -63,20 +63,26 @@ table{
     margin-top: 10;
 }
 table th{
-    text-align: left;
+    text-align: center;
     background: black;
     padding: 10 80;
     
 }
 table td{
-    display: inline-block;
+    border: white solid 1px;
     align-items: center;
     justify-content: center;
     margin:250;
     max-width: 7000px;
     width: 1000px;
-    height: 20vh;
+    height: 80;
     background-color: black;
+    color: white;
+    text-align: center;
+
+}
+table tr{
+ 
     color: white;
 
 }
@@ -141,8 +147,8 @@ margin-right: 1000;
     left:50%;
     transform:translate(-50%,-50%) scale(0);
     background:#fff;
-    width:1000px;
-    height:500;
+    width:1500px;
+    height:600px;
     z-index:2;
     text-align:center;
     padding:20px;
@@ -174,6 +180,61 @@ margin-right: 1000;
     transition:all 300ms ease-in-out;
     transform:translate(-50%,-50%) scale(1);
   }
+  /*-----------------------*/
+  .popup2 .overlay{
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100vw;
+    height:100vh;
+    background:rgba(0,0,0,0.7);
+    z-index:1;
+    display:none;
+}
+.popup2 .content {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0);
+    background:#fff;
+    width:1500px;
+    height:600px;
+    z-index:2;
+    text-align:center;
+    padding:20px;
+    box-sizing:border-box;
+    font-family:"Open Sans",sans-serif;
+  }
+   
+  .popup2 .closebtn1 {
+    cursor:pointer;
+    position:absolute;
+    right:20px;
+    top:20px;
+    width:30px;
+    height:30px;
+    background:#222;
+    color:#fff;
+    font-size:25px;
+    font-weight:600;
+    line-height:30px;
+    text-align:center;
+    border-radius:50%;
+  }
+   
+  .popup2.active .overlay {
+    display:block;
+  }
+
+  .popup2.active .content {
+    transition:all 300ms ease-in-out;
+    transform:translate(-50%,-50%) scale(1);
+  }
+
+
+
+
+
   h1 {
     border-bottom: 5px solid black;
   }
@@ -198,3 +259,4 @@ margin-right: 1000;
     background-color: gray;
     
   }
+ 
